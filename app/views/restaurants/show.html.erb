@@ -20,5 +20,14 @@
   <%= @restaurant.category %>
 </p>
 
+<p>
+  <strong>Reviews:</strong>
+  <ul>
+    <% @restaurant.reviews.each do |review|%>
+    <li> Rating: <%= review.rating %> | <%= review.content%></li>
+    <% end %>
+  </ul>
+</p>
+<%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %> |
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
