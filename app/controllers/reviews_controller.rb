@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+
+  def index
+    @reviews = Review.all
+  end
+
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.new
@@ -12,6 +17,12 @@ class ReviewsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to reviews_path
   end
 
   private
